@@ -23,8 +23,6 @@ public class Activite {
 		this.libelleActivite=nomgout;
 		this.idGenre=idgenre;
 		this.lieu=adresse;
-		this.voteOui=0;
-		this.voteNon=0;
 	}
 
 	public Integer getIdActivite() {
