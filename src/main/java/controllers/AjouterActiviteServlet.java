@@ -42,7 +42,7 @@ public class AjouterActiviteServlet extends HttpServlet{
 		Integer idgenre=Integer.parseInt(request.getParameter("genre"));
 		String nomActivite=request.getParameter("nomActivite");
 		String lieu=request.getParameter("lieu");
-		Integer valeurVote=Integer.parseInt(request.getParameter(""));
+		Integer valeurVote=Integer.parseInt(request.getParameter("vote"));
 		
 		
 		//Recuperation de l'identifiant de l'utilisateur
