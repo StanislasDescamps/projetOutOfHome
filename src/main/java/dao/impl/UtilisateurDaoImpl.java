@@ -29,7 +29,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	    			results.getString("email"), 
 	                results.getInt("sexe"),
 	                results.getInt("age"),
-	                results.getString("domicile"),
+	                results.getString("regionOrigine"),
 	                results.getString("position"),
 	                results.getString("image"),
 	                results.getBoolean("communication"));

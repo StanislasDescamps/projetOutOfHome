@@ -8,7 +8,7 @@ public class Utilisateur {
 	private Integer age;
 	private Integer sexe;
 	private String email;
-	private String domicile;
+	private String regionOrigine;
 	private String position;
 	private String image;
 	private boolean communication;
@@ -20,7 +20,7 @@ public class Utilisateur {
 		this.email=mail;
 		this.sexe=sexe;
 		this.age=age;
-		this.domicile=origine;
+		this.regionOrigine=origine;
 		this.position=pos;
 		this.image=logo;
 		this.communication=comm;
@@ -33,7 +33,7 @@ public class Utilisateur {
 		this.email=mail;
 		this.sexe=sexe;
 		this.age=age;
-		this.domicile=origine;
+		this.regionOrigine=origine;
 		this.image=logo;
 		this.communication=comm;
 	}
@@ -44,7 +44,7 @@ public class Utilisateur {
 		this.email=mail;
 		this.sexe=sexe;
 		this.age=age;
-		this.domicile=origine;
+		this.regionOrigine=origine;
 		this.position=pos;
 		this.image=logo;
 		this.communication=comm;
@@ -110,11 +110,11 @@ public class Utilisateur {
 	}
 
 	public String getDomicile() {
-		return domicile;
+		return regionOrigine;
 	}
 
 	public void setDomicile(String domicile) {
-		this.domicile = domicile;
+		this.regionOrigine = domicile;
 	}
 
 	public String getPosition() {
