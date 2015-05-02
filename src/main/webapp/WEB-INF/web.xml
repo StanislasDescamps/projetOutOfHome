@@ -26,6 +26,10 @@
 		<servlet-name>ProfilUtilisateur</servlet-name>
 		<servlet-class>controllers.ProfilUtilisateurServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ListerActivite</servlet-name>
+		<servlet-class>controllers.ListerActiviteServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
@@ -46,6 +50,10 @@
 	<servlet-mapping>
 		<servlet-name>ProfilUtilisateur</servlet-name>
 		<url-pattern>/profil</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListerActivite</servlet-name>
+		<url-pattern>/listerActivite</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
