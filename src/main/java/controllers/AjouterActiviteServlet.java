@@ -30,10 +30,6 @@ public class AjouterActiviteServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		out.append(json);
 		
-		 //Permet l'ouverture de la page
-    	RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/pages/accueilTempo.jsp");
-    	view.forward(request, response);
-		
 	}
 	
 	@Override
@@ -46,6 +42,8 @@ public class AjouterActiviteServlet extends HttpServlet{
 		Integer idgenre=Integer.parseInt(request.getParameter("genre"));
 		String nomActivite=request.getParameter("nomActivite");
 		String lieu=request.getParameter("lieu");
+		Integer valeurVote=Integer.parseInt(request.getParameter(""));
+		
 		
 		//Recuperation de l'identifiant de l'utilisateur
 		Integer idUtilisateur=Integer.parseInt(request.getParameter("idUtilisateur"));
@@ -55,7 +53,15 @@ public class AjouterActiviteServlet extends HttpServlet{
 		
 		Integer idGout=Manager.getInstance().getActiviteByName(nomActivite).getIdActivite();
 		
-		Manager.getInstance().voteActivite(idUtilisateur, idGout , 1);  //nullPointerException? 
-		Manager.getInstance().incrementeVoteOui(idGout);
+		if(valeurVote!=null){
+			if(valeurVote==1){
+				Manager.getInstance().voteActivite(idUtilisateur, idGout , 1);  //nullPointerException? 
+				Manager.getInstance().incrementeVoteOui(idGout);
+			}else if(valeurVote==0){
+				Manager.getInstance().voteActivite(idUtilisateur, idGout , 0);  //nullPointerException? 
+				Manager.getInstance().incrementeVoteNon(idGout);
+			}
+		
+		}
 	}
 }
