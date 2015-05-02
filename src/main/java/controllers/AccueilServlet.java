@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ public class AccueilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Integer idUtilisateur=Integer.parseInt(request.getParameter("idUtilisateur"));
+		/*Integer idUtilisateur=Integer.parseInt(request.getParameter("idUtilisateur"));
 		
 		//Recuperation de tous les utilisateur (-l'utilisateurActuel)
 		Utilisateur utilisateurActuel=Manager.getInstance().getUtilisateur(idUtilisateur);	
@@ -36,13 +37,13 @@ public class AccueilServlet extends HttpServlet {
 		List<Utilisateur> listeUtilisateurArround=new ArrayList<Utilisateur>();
 		Integer rayon=40000; //distance du rayon en m
 		
-		/*//adapter le code suivant la geolocalisation
+		//adapter le code suivant la geolocalisation
 		for(Utilisateur utilisateur : toutUtilisateur){
 			if(distanceTo(convert(utilisateur.getPosition())) <= rayon){  //voir comment ca marche
 				listeUtilisateurArround.add(utilisateur);
 			}
 		}
-		*/
+		
 		
 		//Initialisation de la liste finale
 		List<Utilisateur> newListeUtilisateurArround=new ArrayList<Utilisateur>();
@@ -75,7 +76,10 @@ public class AccueilServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.append(json1);
-		out.append(json2);
+		out.append(json2);*/
 		
+		 //Permet l'ouverture de la page
+    	RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/pages/accueilTempo.jsp");
+    	view.forward(request, response);
 	}
 }

@@ -49,7 +49,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>ajouterActivite</welcome-file>
+		<welcome-file>accueil</welcome-file>
 	</welcome-file-list>
 </web-app>
 	
