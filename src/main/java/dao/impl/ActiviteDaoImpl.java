@@ -70,9 +70,7 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	
 	        // Utiliser la connexion
 	        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(
-	                  "INSERT INTO `doubletVote`( `idActivite`,`idUtilisateur`,`valeurVote` ) VALUES(?, ?, ?)"); 
-	        
-	        
+	                  "INSERT INTO `doubletvote`( `idActivite`,`idUtilisateur`,`valeurVote` ) VALUES(?, ?, ?)"); 
 	        
 	        stmt.setInt(1,idGout);
 	        stmt.setInt(2,idUtilisateur);
@@ -80,12 +78,6 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	        stmt.executeUpdate();
 	        // Fermer la connexion
 	        connection.close();
-	        
-	        if(valeur==1){
-	        	incrementeVoteOui(idGout);
-	        }else{
-	        	incrementeVoteNon(idGout);
-	        }
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();
