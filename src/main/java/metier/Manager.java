@@ -110,7 +110,7 @@ public class Manager {
 		double latUser = Double.parseDouble(position.split(";")[0]);
 		double lngUser = Double.parseDouble(position.split(";")[1]);
 		for(Activite a : activityBygenre){
-			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10000)){
+			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10)){
 				result.add(a);
 			}
 		}
