@@ -41,7 +41,7 @@ public class Manager {
 	public List<Utilisateur> listerAuthentifiant(){
 		return utilisateurDao.listerAuthentifiant();
 	}
-	public boolean utilisateurtExiste(String mail, String password){
+	public boolean utilisateurExiste(String mail, String password){
 		return utilisateurDao.utilisateurExiste(mail, password);
 	}
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
@@ -104,13 +104,16 @@ public class Manager {
 		genreDao.ajouterChoixGenre(idUtilisateur,idGenre);
 	}
 	
-	public List<Activite> activiteForUser(int idUser, String position ){
+	public List<Activite> activiteForUser(Integer idUser, String position ){
 		List<Activite> result = new ArrayList<Activite>();
 		List<Activite> activityBygenre =  activiteDao.listerActiviteForUSer(idUser);
 		double latUser = Double.parseDouble(position.split(";")[0]);
 		double lngUser = Double.parseDouble(position.split(";")[1]);
+		//System.out.println("etape manager");
 		for(Activite a : activityBygenre){
+			//System.out.println(a.getIdActivite());
 			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10000)){
+				//System.out.println("ajout de "+a.getIdActivite());
 				result.add(a);
 			}
 		}
