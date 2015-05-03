@@ -99,7 +99,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	        stmt.setInt(1, idUtilisateur);
 	        ResultSet results = stmt.executeQuery();
 	        if(results.next()){
-	        	utilisateur = new Utilisateur(results.getInt("idEtudiant"),
+	        	utilisateur = new Utilisateur(results.getInt("idUtilisateur"),
 	                    results.getString("password"),
 	                    results.getString("pseudo"),
 	                    results.getString("email"),
@@ -153,7 +153,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	    	stmt.setInt(1, idLangue);
 	    	ResultSet results = stmt.executeQuery();
 	    	while (results.next()) {
-	    		Utilisateur utilisateur = new Utilisateur(results.getInt("idEtudiant"),
+	    		Utilisateur utilisateur = new Utilisateur(results.getInt("idUtilisateur"),
 	                    results.getString("password"),
 	                    results.getString("pseudo"),
 	                    results.getString("email"),
@@ -197,6 +197,42 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	        e.printStackTrace();
 	    }
 		
+	}
+
+	@Override
+	public Utilisateur getUtilisateurByEmail(String email) {
+		Utilisateur utilisateur= null;
+		// Cr�er une nouvelle connexion � la BDD
+	    try {
+	        Connection connection = 
+	            DataSourceProvider.getDataSource().getConnection();
+
+	        // Utiliser la connexion
+	        PreparedStatement stmt = (PreparedStatement) connection
+	        		.prepareStatement("SELECT * FROM utilisateur WHERE email =? ");
+	        
+	        stmt.setString(1, email);
+	        ResultSet results = stmt.executeQuery();
+	        if(results.next()){
+	        	utilisateur = new Utilisateur(results.getInt("idUtilisateur"),
+	                    results.getString("password"),
+	                    results.getString("pseudo"),
+	                    results.getString("email"),
+	                    results.getInt("sexe"),
+	                    results.getInt("age"),
+	                    results.getString("regionOrigine"),
+	                    results.getDouble("latitude"),
+		                results.getDouble("longitude"),
+	                    results.getString("image"),
+	                    results.getBoolean("communication"));
+	        }
+
+	        // Fermer la connexion
+	        connection.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return utilisateur;
 	}
 }
 

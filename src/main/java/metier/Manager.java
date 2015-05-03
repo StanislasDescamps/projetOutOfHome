@@ -53,6 +53,9 @@ public class Manager {
 	public void actualiserPositionUtilisateur(Integer idUtilisateur, Double latitude, Double longitude){
 		utilisateurDao.actualiserPositionUtilisateur(idUtilisateur, latitude, longitude);
 	}
+	public Utilisateur getUtilisateurByEmail(String email){
+		return utilisateurDao.getUtilisateurByEmail(email);
+	}
 	
 	//Langue
 	public List<Langue> listerLangue(){
