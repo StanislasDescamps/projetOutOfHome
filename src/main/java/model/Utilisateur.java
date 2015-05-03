@@ -9,8 +9,8 @@ public class Utilisateur {
 	private Integer sexe;
 	private String email;
 	private String regionOrigine;
-	private Double longitude;
 	private Double latitude;
+	private Double longitude;
 	private String image;
 	private Boolean communication;
 	

@@ -5,8 +5,8 @@ public class Activite {
 	private Integer idActivite;
 	private String libelleActivite;
 	private Integer idGenre;
-	private Double longitudeAct;
 	private Double latitudeAct;
+	private Double longitudeAct;
 	private Integer voteOui;
 	private Integer voteNon;
 	
@@ -14,8 +14,8 @@ public class Activite {
 		this.idActivite=idgout;
 		this.libelleActivite=nomgout;
 		this.idGenre=idgenre;
-		this.longitudeAct=longitude;
 		this.latitudeAct=latitude;
+		this.longitudeAct=longitude;
 		this.voteOui=oui;
 		this.voteNon=non;
 	}
@@ -24,8 +24,8 @@ public class Activite {
 		this.idActivite=idgout;
 		this.libelleActivite=nomgout;
 		this.idGenre=idgenre;
-		this.longitudeAct=longitude;
 		this.latitudeAct=latitude;
+		this.longitudeAct=longitude;
 	}
 
 	public Integer getIdActivite() {
