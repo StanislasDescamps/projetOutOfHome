@@ -60,10 +60,10 @@ public class AjouterActiviteServlet extends HttpServlet{
 		if(valeurVote!=null){
 			if(valeurVote==1){
 				Manager.getInstance().voteActivite(idUtilisateur, idGout , 1);  //nullPointerException? 
-				Manager.getInstance().incrementeVoteOui(idGout);
+				//Manager.getInstance().incrementeVoteOui(idGout);
 			}else if(valeurVote==0){
 				Manager.getInstance().voteActivite(idUtilisateur, idGout , 0);  //nullPointerException? 
-				Manager.getInstance().incrementeVoteNon(idGout);
+				//Manager.getInstance().incrementeVoteNon(idGout);
 			}
 		
 		}
