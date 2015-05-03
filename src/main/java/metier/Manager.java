@@ -117,13 +117,18 @@ public class Manager {
 		return result;
 	}
 	
-	private boolean distMin(double lat1,double lat2,double long1,double long2, double dist){
+	private static boolean distMin(double lat1,double lat2,double long1,double long2, double dist){
 		//cf http://andrew.hedges.name/experiments/haversine/
+		lat1 = lat1* Math.PI/180;
+		lat2 = lat2* Math.PI/180;
+		long1 = long1* Math.PI/180;
+		long2 = long2* Math.PI/180;
 		double dlon = long2-long1;
 		double dlat = lat2-lat1;
 		double a = (Math.sin(dlat/2)*Math.sin(dlat/2))+Math.cos(lat1)*Math.cos(lat2)*(Math.sin(dlon/2)*Math.sin(dlon/2));
-		double c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		double d = 6371000 * c;
+		double c = 2 * Math.asin(Math.sqrt(a));
+		double d = 6378 * c;
+		System.out.println(d);
 		if(d<=dist){
 			return true;
 		}else{
