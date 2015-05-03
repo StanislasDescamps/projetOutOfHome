@@ -112,11 +112,8 @@ public class Manager {
 		List<Activite> activityBygenre =  activiteDao.listerActiviteForUSer(idUser);
 		double latUser = Double.parseDouble(position.split(";")[0]);
 		double lngUser = Double.parseDouble(position.split(";")[1]);
-		//System.out.println("etape manager");
 		for(Activite a : activityBygenre){
-			//System.out.println(a.getIdActivite());
-			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10000)){
-				//System.out.println("ajout de "+a.getIdActivite());
+			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10)){
 				result.add(a);
 			}
 		}
