@@ -12,4 +12,5 @@ public interface UtilisateurDao {
 	public Utilisateur getUtilisateur(Integer idUtilisateur); //recupere les informations d'un utilisateur
 	public void ajouterUtilisateur(Utilisateur utilisateur); //creation d'un profil
 	public List<Utilisateur> listerUtilisateurByLangues(Integer idLangue); //permet de recuperer les utilisateurs parlant cette langues
+	public void actualiserPositionUtilisateur(Integer idUtilisateur, Double latitude, Double longitude); //permet de mettre a jour la position de l'utilisateur
 }

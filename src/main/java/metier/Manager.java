@@ -49,6 +49,9 @@ public class Manager {
 	public Utilisateur getUtilisateur(Integer idUtilisateur){
 		return utilisateurDao.getUtilisateur(idUtilisateur);
 	}
+	public void actualiserPositionUtilisateur(Integer idUtilisateur, Double latitude, Double longitude){
+		utilisateurDao.actualiserPositionUtilisateur(idUtilisateur, latitude, longitude);
+	}
 	
 	//Langue
 	public List<Langue> listerLangue(){
