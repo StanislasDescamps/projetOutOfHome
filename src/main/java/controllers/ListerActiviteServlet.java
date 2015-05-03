@@ -20,9 +20,11 @@ public class ListerActiviteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
+		Integer idUser = Integer.parseInt(request.getParameter("idUser"));
+		String userLocalisation = request.getParameter("userLocalisation");
 		Gson gson = new Gson();
-		String json = gson.toJson(Manager.getInstance().listerActivite());
+		String json = gson.toJson(Manager.getInstance().activiteForUser(idUser,userLocalisation));
 		PrintWriter out = response.getWriter();
 		out.append(json);
 		

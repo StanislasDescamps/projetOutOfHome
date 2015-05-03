@@ -171,4 +171,31 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    }
 		return listeGout;
 	}
+	
+	public List<Activite> listerActiviteForUSer(int idUser) {
+		List<Activite> listeGout = new ArrayList<Activite>();
+	    try {
+	    	Connection connection = DataSourceProvider.getDataSource().getConnection();
+	    	PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("SELECT a.idActivite, a.libelleActivite, a.idGenre, a.latitudeAct, a.longitudeAct, a.voteOui, a.voteNon"
+	    			+ " FROM activite a JOIN doubletgenre dg ON dg.idGenre = a.idGenre"
+	    			+ "JOIN utilisateur u ON u.idUtilisateur = dg.idUtilisateur"
+	    			+ "WHERE u.idUtilisateur =?");
+	    	stmt.setInt(1, idUser);
+	    	ResultSet results = stmt.executeQuery();
+	    	while (results.next()) {
+	    		Activite gout = new Activite(results.getInt("idActivite"), 
+	                   results.getString("libelleActivite"),
+	                   results.getInt("idGenre"),
+	                   results.getDouble("latitudeAct"),
+		                results.getDouble("longitudeAct"),
+	                   results.getInt("voteOui"),
+	                   results.getInt("voteNon"));
+	    		listeGout.add(gout);
+	    }
+		connection.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return listeGout;
+	}
 }

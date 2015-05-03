@@ -8,6 +8,7 @@ public interface ActiviteDao {
 	
 	public List<Activite> listerActivite(); // permet de lister tous les gouts
 	public List<Activite> listerActiviteByLieu(String lieu); // permet de lister tous les gouts a partir du lieu
+	public List<Activite> listerActiviteForUSer(int idUser); // permet de lister toutes les activité par rapport à un idUser
 	public void ajouterActivite(Activite gout); //permet d'ajouter un nouveau gout
 	public void voteActivite(Integer idUtilisateur, Integer idActivite, Integer valeur); //permet d'ajouter la note du gout de l'utilisateur
 	public Activite getActiviteByName(String nomActivite); //permet de recuperer les info d'un gout par son nom

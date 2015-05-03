@@ -1,5 +1,6 @@
 package metier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Activite;
@@ -101,6 +102,34 @@ public class Manager {
 	
 	public void ajouterChoixGenre(Integer idUtilisateur, Integer idGenre){
 		genreDao.ajouterChoixGenre(idUtilisateur,idGenre);
+	}
+	
+	public List<Activite> activiteForUser(int idUser, String position ){
+		List<Activite> result = new ArrayList<Activite>();
+		List<Activite> activityBygenre =  activiteDao.listerActiviteForUSer(idUser);
+		double latUser = Double.parseDouble(position.split(";")[0]);
+		double lngUser = Double.parseDouble(position.split(";")[1]);
+		for(Activite a : activityBygenre){
+			if(distMin(a.getLatitudeAct(),latUser,a.getLongitudeAct(),lngUser,10000)){
+				result.add(a);
+			}
+		}
+		return result;
+	}
+	
+	private boolean distMin(double lat1,double lat2,double long1,double long2, double dist){
+		//cf http://andrew.hedges.name/experiments/haversine/
+		double dlon = long2-long1;
+		double dlat = lat2-lat1;
+		double a = (Math.sin(dlat/2)*Math.sin(dlat/2))+Math.cos(lat1)*Math.cos(lat2)*(Math.sin(dlon/2)*Math.sin(dlon/2));
+		double c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		double d = 6371000 * c;
+		if(d<=dist){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 }
 
