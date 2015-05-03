@@ -48,7 +48,11 @@ public class AjouterActiviteServlet extends HttpServlet{
 		//Recuperation de l'identifiant de l'utilisateur
 		Integer idUtilisateur=Integer.parseInt(request.getParameter("idUtilisateur"));
 		
-		Activite nouveauGout= new Activite(null,nomActivite, idgenre, lieu);
+		//Traitement du lieu
+		Double latitude=Double.parseDouble(lieu.split(";")[0]);
+		Double longitude=Double.parseDouble(lieu.split(";")[1]);
+		
+		Activite nouveauGout= new Activite(null,nomActivite, idgenre, latitude, longitude);
 		Manager.getInstance().ajouterActivite(nouveauGout);
 		
 		Integer idGout=Manager.getInstance().getActiviteByName(nomActivite).getIdActivite();
@@ -64,4 +68,6 @@ public class AjouterActiviteServlet extends HttpServlet{
 		
 		}
 	}
+	
+	
 }
