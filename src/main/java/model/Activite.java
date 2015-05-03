@@ -5,24 +5,27 @@ public class Activite {
 	private Integer idActivite;
 	private String libelleActivite;
 	private Integer idGenre;
-	private String lieu;
+	private Double longitudeAct;
+	private Double latitudeAct;
 	private Integer voteOui;
 	private Integer voteNon;
 	
-	public Activite(Integer idgout, String nomgout, Integer idgenre, String adresse, Integer oui, Integer non){
+	public Activite(Integer idgout, String nomgout, Integer idgenre, Double latitude, Double longitude, Integer oui, Integer non){
 		this.idActivite=idgout;
 		this.libelleActivite=nomgout;
 		this.idGenre=idgenre;
-		this.lieu=adresse;
+		this.longitudeAct=longitude;
+		this.latitudeAct=latitude;
 		this.voteOui=oui;
 		this.voteNon=non;
 	}
 	
-	public Activite(Integer idgout, String nomgout, Integer idgenre, String adresse){
+	public Activite(Integer idgout, String nomgout, Integer idgenre, Double latitude, Double longitude){
 		this.idActivite=idgout;
 		this.libelleActivite=nomgout;
 		this.idGenre=idgenre;
-		this.lieu=adresse;
+		this.longitudeAct=longitude;
+		this.latitudeAct=latitude;
 	}
 
 	public Integer getIdActivite() {
@@ -49,12 +52,20 @@ public class Activite {
 		this.idGenre = idGenre;
 	}
 
-	public String getLieu() {
-		return lieu;
+	public Double getLongitudeAct() {
+		return longitudeAct;
 	}
 
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
+	public void setLongitudeAct(Double longitudeAct) {
+		this.longitudeAct = longitudeAct;
+	}
+
+	public Double getLatitudeAct() {
+		return latitudeAct;
+	}
+
+	public void setLatitudeAct(Double latitudeAct) {
+		this.latitudeAct = latitudeAct;
 	}
 
 	public Integer getVoteOui() {

@@ -30,7 +30,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	                results.getInt("sexe"),
 	                results.getInt("age"),
 	                results.getString("regionOrigine"),
-	                results.getString("position"),
+	                results.getDouble("latitude"),
+	                results.getDouble("longitude"),
 	                results.getString("image"),
 	                results.getBoolean("communication"));
 	    	listeUtilisateur.add(utilisateur);
@@ -105,7 +106,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	                    results.getInt("sexe"),
 	                    results.getInt("age"),
 	                    results.getString("regionOrigine"),
-	                    results.getString("position"),
+	                    results.getDouble("latitude"),
+		                results.getDouble("longitude"),
 	                    results.getString("image"),
 	                    results.getBoolean("communication"));
 	        }
@@ -133,7 +135,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	        stmt.setInt(5,utilisateur.getAge());
 	        stmt.setString(6, utilisateur.getDomicile());
 	        stmt.setString(7, utilisateur.getImage());
-	        stmt.setBoolean(8, utilisateur.isCommunication());
+	        stmt.setBoolean(8, utilisateur.getCommunication());
 	        stmt.executeUpdate();
 	        // Fermer la connexion
 	        connection.close();
@@ -158,7 +160,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	                    results.getInt("sexe"),
 	                    results.getInt("age"),
 	                    results.getString("regionOrigine"),
-	                    results.getString("position"),
+	                    results.getDouble("latitude"),
+		                results.getDouble("longitude"),
 	                    results.getString("image"),
 	                    results.getBoolean("communication"));
 	    		listeUtilisateur.add(utilisateur);
@@ -168,6 +171,32 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 	        e.printStackTrace();
 	    }
 		return listeUtilisateur;
+	}
+
+	@Override
+	public void actualiserPositionUtilisateur(Integer idUtilisateur, Double latitude, Double longitude) {
+		try {
+	        Connection connection = 
+	            DataSourceProvider.getDataSource().getConnection();
+	
+	        // Utiliser la connexion
+	        PreparedStatement stmt1 = (PreparedStatement) connection.prepareStatement(
+	                  "UPDATE `utilisateur` SET `latitude`= ? AND `longitude`= ? WHERE `idUtilisateur`=?");
+	      
+	        
+	        stmt1.setDouble(1,latitude);
+	        stmt1.setDouble(2, longitude);
+	        
+	        stmt1.setInt(3, idUtilisateur);
+	        	        
+	        stmt1.executeUpdate();
+	        
+	        // Fermer la connexion
+	        connection.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
 	}
 }
 

@@ -27,7 +27,8 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    	Activite gout = new Activite(results.getInt("idActivite"),
 	    			results.getString("libelleActivite"),
 	    			results.getInt("idGenre"),
-	    			results.getString("lieu"),
+	    			results.getDouble("latitudeAct"),
+	                results.getDouble("longitudeAct"),
 	                results.getInt("voteOui"),
 	                results.getInt("voteNon"));
 	    	listeGout.add(gout);
@@ -46,12 +47,13 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	
 	        // Utiliser la connexion
 	        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(
-	                  "INSERT INTO `activite`(`libelleActivite`, `idGenre`, `lieu`, `voteOui`, `voteNon`) VALUES(?, ?, ?, ?, ?)"); 
+	                  "INSERT INTO `activite`(`libelleActivite`, `idGenre`, `latitudeAct`,`longitudeAct`, `voteOui`, `voteNon`) VALUES(?, ?, ?, ?, ?,?)"); 
 	        stmt.setString(1,gout.getLibelleActivite());
 	        stmt.setInt(2,gout.getIdGenre());
-	        stmt.setString(3,gout.getLieu());
-	        stmt.setInt(4,0);
+	        stmt.setDouble(3,gout.getLatitudeAct());
+	        stmt.setDouble(4,gout.getLongitudeAct());
 	        stmt.setInt(5,0);
+	        stmt.setInt(6,0);
 	        stmt.executeUpdate();
 	        // Fermer la connexion
 	        connection.close();
@@ -102,7 +104,8 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    	gout = new Activite(results.getInt("idActivite"), 
 	                results.getString("nomActivite"),
 	                results.getInt("idGenre"),
-	                results.getString("lieu"),
+	                results.getDouble("latitudeAct"),
+	                results.getDouble("longitudeAct"),
 	                results.getInt("voteOui"),
 	                results.getInt("voteNon"));
 	    }
@@ -151,7 +154,8 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    }
 		
 	}
-
+//!!!!Attention ici le lieu est encore une string!!!!!!!!!!!!
+	
 	public List<Activite> listerActiviteByLieu(String lieu) {
 		List<Activite> listeGout = new ArrayList<Activite>();
 	    try {
@@ -163,7 +167,8 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    		Activite gout = new Activite(results.getInt("idActivite"), 
 	                   results.getString("libelleActivite"),
 	                   results.getInt("idGenre"),
-	                   results.getString("lieu"),
+	                   results.getDouble("latitudeAct"),
+		                results.getDouble("longitudeAct"),
 	                   results.getInt("voteOui"),
 	                   results.getInt("voteNon"));
 	    		listeGout.add(gout);
@@ -174,5 +179,4 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    }
 		return listeGout;
 	}
-
 }

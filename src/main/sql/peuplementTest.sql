@@ -14,16 +14,16 @@ INSERT INTO `genreactivite`(`idGenre`,`nomGenre`) VALUES (3,'Voiture');
 INSERT INTO `genreactivite`(`idGenre`,`nomGenre`) VALUES (4,'Visite culturelle');
 
 -- peuplement pour utilisateur
-INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`position`,`image`,`communication`) VALUES (1,'admin','stan','stanislas.descamps@gmail.com',1,40,'Madrid','MaPosition','monImage',false);
-INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`position`,`image`,`communication`) VALUES (2,'pass','tonton','tonton.tata@gmail.com',1,25,'Istanbul','MaPosition','monImage',true);
-INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`position`,`image`,`communication`) VALUES (3,'test','tata','tata.tonton@gmail.com',2,32,'France','MaPosition','monImage',true);
-INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`position`,`image`,`communication`) VALUES (4,'heyyee','moi','moi.moi@gmail.com',2,10,'Quebec','MaPosition','monImage',true);
+INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`latitude`,`longitude`,`image`,`communication`) VALUES (1,'admin','stan','stanislas.descamps@gmail.com',1,40,'Madrid',40.4165000,-3.7025600,'monImage',false);
+INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`latitude`,`longitude`,`image`,`communication`) VALUES (2,'pass','tonton','tonton.tata@gmail.com',1,25,'Istanbul',40.4165000,-3.7025600,'monImage',true);
+INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`latitude`,`longitude`,`image`,`communication`) VALUES (3,'test','tata','tata.tonton@gmail.com',2,32,'France',48.8534100,2.3488000,'monImage',true);
+INSERT INTO `utilisateur`(`idUtilisateur`,`password`,`pseudo`,`email`,`sexe`,`age`,`regionOrigine`,`latitude`,`longitude`,`image`,`communication`) VALUES (4,'heyyee','moi','moi.moi@gmail.com',2,10,'Quebec',48.8534100,2.3488000,'monImage',true);
 
 -- peuplement pour activite
-INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`lieu`,`voteOui`,`voteNon`) VALUES (1,'OpenTennis',1,'pas loin',4,0);
-INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`lieu`,`voteOui`,`voteNon`) VALUES (2,'CheminSinueux',2,'dans le coin',3,1);
-INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`lieu`,`voteOui`,`voteNon`) VALUES (3,'SalonAutomobile',3,'a gauche',1,3);
-INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`lieu`,`voteOui`,`voteNon`) VALUES (4,'Musée lambda',4,'20 km',2,2);
+INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`latitudeAct`,`longitudeAct`,`voteOui`,`voteNon`) VALUES (1,'OpenTennis',1,40.4165000,-3.7025600,4,0);
+INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`latitudeAct`,`longitudeAct`,`voteOui`,`voteNon`) VALUES (2,'CheminSinueux',2,40.4165000,-3.7025600,3,1);
+INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`latitudeAct`,`longitudeAct`,`voteOui`,`voteNon`) VALUES (3,'SalonAutomobile',3,48.8534100,2.3488000,1,3);
+INSERT INTO `activite`(`idActivite`,`libelleActivite`,`idGenre`,`latitudeAct`,`longitudeAct`,`voteOui`,`voteNon`) VALUES (4,'Musée lambda',4,48.8534100,2.3488000,2,2);
 
 -- peuplement pour langues
 INSERT INTO `langues`(`idLangue`,`nomLangue`) VALUES (1,'Français');

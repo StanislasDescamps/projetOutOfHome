@@ -9,11 +9,12 @@ public class Utilisateur {
 	private Integer sexe;
 	private String email;
 	private String regionOrigine;
-	private String position;
+	private Double longitude;
+	private Double latitude;
 	private String image;
-	private boolean communication;
+	private Boolean communication;
 	
-	public Utilisateur(Integer idUser, String pass, String pseudo, String mail, Integer sexe, Integer age, String origine, String pos, String logo, boolean comm){
+	public Utilisateur(Integer idUser, String pass, String pseudo, String mail, Integer sexe, Integer age, String origine, Double latitude, Double longitude, String logo, Boolean comm){
 		this.idUtilisateur=idUser;
 		this.password=pass;
 		this.pseudo=pseudo;
@@ -21,12 +22,13 @@ public class Utilisateur {
 		this.sexe=sexe;
 		this.age=age;
 		this.regionOrigine=origine;
-		this.position=pos;
+		this.longitude=longitude;
+		this.latitude=latitude;
 		this.image=logo;
 		this.communication=comm;
 	}
 	
-	public Utilisateur(Integer idUser, String pass, String pseudo, String mail, Integer sexe, Integer age, String origine, String logo, boolean comm){
+	public Utilisateur(Integer idUser, String pass, String pseudo, String mail, Integer sexe, Integer age, String origine, String logo, Boolean comm){
 		this.idUtilisateur=idUser;
 		this.password=pass;
 		this.pseudo=pseudo;
@@ -38,14 +40,15 @@ public class Utilisateur {
 		this.communication=comm;
 	}
 	
-	public Utilisateur(Integer idUser, String pseudo, String mail, Integer sexe, Integer age, String origine, String pos, String logo, boolean comm){
+	public Utilisateur(Integer idUser, String pseudo, String mail, Integer sexe, Integer age, String origine, Double latitude, Double longitude, String logo, Boolean comm){
 		this.idUtilisateur=idUser;
 		this.pseudo=pseudo;
 		this.email=mail;
 		this.sexe=sexe;
 		this.age=age;
 		this.regionOrigine=origine;
-		this.position=pos;
+		this.longitude=longitude;
+		this.latitude=latitude;
 		this.image=logo;
 		this.communication=comm;
 	}
@@ -117,12 +120,36 @@ public class Utilisateur {
 		this.regionOrigine = domicile;
 	}
 
-	public String getPosition() {
-		return position;
+	public String getRegionOrigine() {
+		return regionOrigine;
 	}
 
-	public void setPosition(String position) {
-		this.position = position;
+	public void setRegionOrigine(String regionOrigine) {
+		this.regionOrigine = regionOrigine;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Boolean getCommunication() {
+		return communication;
+	}
+
+	public void setCommunication(Boolean communication) {
+		this.communication = communication;
 	}
 
 	public String getImage() {
@@ -131,13 +158,5 @@ public class Utilisateur {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public boolean isCommunication() {
-		return communication;
-	}
-
-	public void setCommunication(boolean communication) {
-		this.communication = communication;
 	}
 }
