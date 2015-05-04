@@ -34,6 +34,10 @@
 		<servlet-name>ListerUtilisateur</servlet-name>
 		<servlet-class>controllers.ListerUtilisateurServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Vote</servlet-name>
+		<servlet-class>controllers.VoteServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
@@ -62,6 +66,10 @@
 	<servlet-mapping>
 		<servlet-name>ListerUtilisateur</servlet-name>
 		<url-pattern>/listerUtilisateur</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Vote</servlet-name>
+		<url-pattern>/vote</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
