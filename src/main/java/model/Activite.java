@@ -27,7 +27,7 @@ public class Activite {
 		this.latitudeAct=latitude;
 		this.longitudeAct=longitude;
 	}
-
+	
 	public Integer getIdActivite() {
 		return idActivite;
 	}
