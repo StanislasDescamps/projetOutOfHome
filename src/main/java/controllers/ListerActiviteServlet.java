@@ -24,7 +24,14 @@ public class ListerActiviteServlet extends HttpServlet{
 		Integer idUser = Integer.parseInt(request.getParameter("idUser"));
 		String userLocalisation = request.getParameter("userLocalisation");
 		Gson gson = new Gson();
-		//System.out.println("idUser= "+idUser+"\nuserLocalisation= "+userLocalisation);
+				
+		//Mise a jour de la localisation
+		//Traitement du lieu
+		Double latitude=Double.parseDouble(userLocalisation.split(";")[0]);
+		Double longitude=Double.parseDouble(userLocalisation.split(";")[1]);
+		
+		Manager.getInstance().actualiserPositionUtilisateur(idUser, latitude, longitude);
+		
 		String json = gson.toJson(Manager.getInstance().activiteForUser(idUser,userLocalisation));
 		PrintWriter out = response.getWriter();
 		out.append(json);
