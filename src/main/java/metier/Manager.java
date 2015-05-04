@@ -98,6 +98,9 @@ public class Manager {
 		activiteDao.incrementeVoteNon(idGout);
 	}
 	
+	public Boolean getVoteActiviteUtilisateur(Integer idUtilisateur, Integer idActivite){
+		return activiteDao.getVoteActiviteUtilisateur(idUtilisateur, idActivite);
+	}
 	//Genre
 	public List<Genre> listerGenre(){
 		return genreDao.listerGenre();

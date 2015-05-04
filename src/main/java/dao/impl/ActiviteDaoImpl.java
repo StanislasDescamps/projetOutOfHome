@@ -195,4 +195,23 @@ public class ActiviteDaoImpl implements ActiviteDao{
 	    }
 		return listeGout;
 	}
+
+	public Boolean getVoteActiviteUtilisateur(Integer idUtilisateur, Integer idActivite) {
+		Boolean valeurVote=false;
+		try {
+	    	Connection connection = DataSourceProvider.getDataSource().getConnection();
+	    	PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("SELECT * FROM doubletvote WHERE idUtilisateur=? AND idActivite=?");
+	    	stmt.setInt(1, idUtilisateur);
+	    	stmt.setInt(2, idActivite);
+	    	
+	    	ResultSet results = stmt.executeQuery();
+	    	while (results.next()) {
+	    		valeurVote=results.getBoolean("valeurVote");
+	    }
+		connection.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return valeurVote;
+	}
 }

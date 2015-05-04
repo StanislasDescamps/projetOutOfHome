@@ -14,4 +14,5 @@ public interface ActiviteDao {
 	public Activite getActiviteByName(String nomActivite); //permet de recuperer les info d'un gout par son nom
 	public void incrementeVoteOui(Integer idActivite); //permet d'ajouter 1 au vote oui
 	public void incrementeVoteNon(Integer idActivite); //permet d'ajouter 1 au vote non
+	public Boolean getVoteActiviteUtilisateur(Integer idUtilisateur, Integer idActivite); //permet de recuperer la liste des activites votees de l'utilisateur
 }
