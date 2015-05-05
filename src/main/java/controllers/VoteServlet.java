@@ -26,7 +26,7 @@ public class VoteServlet extends HttpServlet{
 		Integer valeurVote=Integer.parseInt(request.getParameter("vote"));
 		Boolean dejaVote=Manager.getInstance().getVoteActiviteUtilisateur(idUtilisateur, idActivite);
 		
-		if(dejaVote!=true){
+		if(!dejaVote){
 			if(valeurVote!=null){
 				if(valeurVote==1){
 					Manager.getInstance().voteActivite(idUtilisateur, idActivite , 1);
