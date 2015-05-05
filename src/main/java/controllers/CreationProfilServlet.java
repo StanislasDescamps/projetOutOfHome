@@ -19,25 +19,19 @@ public class CreationProfilServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 		
 		/////////////////A synchroniser aver les balises sur android/////////////////////////////////////////////
 		String pseudo=request.getParameter("pseudo");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		Integer sexe=Integer.parseInt(request.getParameter("sexe"));  
-		Integer age=Integer.parseInt(request.getParameter("age"));
+		String age=request.getParameter("age");
+		String sexe=request.getParameter("sexe");  
 		String image=request.getParameter("image");
 		String origine=request.getParameter("origine");
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+		Double lat=0.00;
+		Double longi=0.00;
 		//Recuperation  de tous les utilisateurs dans une liste
 		List<Utilisateur> listUtilisateur = new ArrayList<Utilisateur>();
 		listUtilisateur = Manager.getInstance().listerAuthentifiant();
@@ -57,8 +51,15 @@ public class CreationProfilServlet extends HttpServlet{
 		//s'il n'existe pas on cree le profil
 		if(!existe)
 		{
-			Utilisateur nouvelUtilisateur = new Utilisateur(null, password, pseudo, email, sexe, age, origine,image,true);
+			Utilisateur nouvelUtilisateur = new Utilisateur(null, password, pseudo, email, Integer.parseInt(sexe), Integer.parseInt(age), origine, lat, longi,image,true);
 			Manager.getInstance().ajouterUtilisateur(nouvelUtilisateur);
 		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
 	}
 }
