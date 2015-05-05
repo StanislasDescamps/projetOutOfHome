@@ -2,7 +2,6 @@ package controllers;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import metier.Manager;
 import model.Activite;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 public class AjouterActiviteServlet extends HttpServlet{
 
@@ -24,17 +23,6 @@ public class AjouterActiviteServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(Manager.getInstance().listerGenre());
-		PrintWriter out = response.getWriter();
-		out.append(json);
-		
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -68,7 +56,9 @@ public class AjouterActiviteServlet extends HttpServlet{
 			Activite nouveauGout= new Activite(null,nomActivite, idgenre, latitude, longitude);
 			Manager.getInstance().ajouterActivite(nouveauGout);
 			
-			Integer idGout=Manager.getInstance().getActiviteByName(nomActivite).getIdActivite();
+			Integer nbActivite=Manager.getInstance().listerActivite().size();
+			
+			Integer idGout=nbActivite+1;
 			
 			if(valeurVote!=null){
 				if(valeurVote==1){
@@ -81,6 +71,15 @@ public class AjouterActiviteServlet extends HttpServlet{
 			
 			}
 		}
+		
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
 	}
 	
 	
