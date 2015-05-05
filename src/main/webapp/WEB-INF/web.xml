@@ -38,6 +38,10 @@
 		<servlet-name>Vote</servlet-name>
 		<servlet-class>controllers.VoteServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Genre</servlet-name>
+		<servlet-class>controllers.GenreServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
@@ -70,6 +74,10 @@
 	<servlet-mapping>
 		<servlet-name>Vote</servlet-name>
 		<url-pattern>/vote</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Genre</servlet-name>
+		<url-pattern>/genre</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
