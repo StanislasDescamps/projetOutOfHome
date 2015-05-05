@@ -41,18 +41,23 @@ public class Manager {
 	public List<Utilisateur> listerAuthentifiant(){
 		return utilisateurDao.listerAuthentifiant();
 	}
+	
 	public boolean utilisateurExiste(String mail, String password){
 		return utilisateurDao.utilisateurExiste(mail, password);
 	}
+	
 	public void ajouterUtilisateur(Utilisateur utilisateur) {
 		utilisateurDao.ajouterUtilisateur(utilisateur);
 	}
+	
 	public Utilisateur getUtilisateur(Integer idUtilisateur){
 		return utilisateurDao.getUtilisateur(idUtilisateur);
 	}
+	
 	public void actualiserPositionUtilisateur(Integer idUtilisateur, Double latitude, Double longitude){
 		utilisateurDao.actualiserPositionUtilisateur(idUtilisateur, latitude, longitude);
 	}
+	
 	public Utilisateur getUtilisateurByEmail(String email){
 		return utilisateurDao.getUtilisateurByEmail(email);
 	}
@@ -108,6 +113,10 @@ public class Manager {
 	
 	public void ajouterChoixGenre(Integer idUtilisateur, Integer idGenre){
 		genreDao.ajouterChoixGenre(idUtilisateur,idGenre);
+	}
+	
+	public List<Genre> listerGenreByUtilisateur(Integer idUtilisateur) {
+		return genreDao.listerGenreByUtilisateur(idUtilisateur);
 	}
 	
 	public List<Activite> activiteForUser(Integer idUser, String position ){

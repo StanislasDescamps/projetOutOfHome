@@ -33,6 +33,25 @@ public class GenreDaoImpl implements GenreDao{
 	    }
 		return listeGenre;
 	}
+	
+	public List<Genre> listerGenreByUtilisateur(Integer idUtilisateur) {
+		List<Genre> listeGenre = new ArrayList<Genre>();
+	    try {
+	    	Connection connection = DataSourceProvider.getDataSource().getConnection();
+	    	PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("SELECT * FROM genreactivite INNER JOIN doubletgenre ON genreactivite.idGenre=doubletgenre=idGenre WHERE doubletgenre.idUtilisateur=?");
+	    	stmt.setInt(1, idUtilisateur);
+	    	ResultSet results = stmt.executeQuery();
+	    	while (results.next()) {
+	    	Genre genre = new Genre(results.getInt("idGenre"),
+	                results.getString("nomGenre"));
+	    	listeGenre.add(genre);
+	    }
+		connection.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return listeGenre;
+	}
 
 	public void ajouterChoixGenre(Integer idUtilisateur, Integer idGenre) {
 		try {
