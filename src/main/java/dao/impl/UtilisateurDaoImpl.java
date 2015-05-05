@@ -127,15 +127,17 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 
 	        // Utiliser la connexion
 	        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(
-	                  "INSERT INTO `utilisateur`( `password`, `pseudo`, `email`, `sexe`, `age`, `regionOrigine`,`image`, `communication`) VALUES(?, ?, ?, ?, ?, ?,?,?)"); 
+	                  "INSERT INTO `utilisateur`( `password`, `pseudo`, `email`, `sexe`, `age`, `regionOrigine`, `latitude`,`longitude`,`image`, `communication`) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 	        stmt.setString(1, utilisateur.getPassword());
 	        stmt.setString(2, utilisateur.getPseudo());
 	        stmt.setString(3, utilisateur.getEmail());
 	        stmt.setInt(4, utilisateur.getSexe());
 	        stmt.setInt(5,utilisateur.getAge());
 	        stmt.setString(6, utilisateur.getDomicile());
-	        stmt.setString(7, utilisateur.getImage());
-	        stmt.setBoolean(8, utilisateur.getCommunication());
+	        stmt.setDouble(7,utilisateur.getLatitude());
+	        stmt.setDouble(8,utilisateur.getLongitude());
+	        stmt.setString(9, utilisateur.getImage());
+	        stmt.setBoolean(10, utilisateur.getCommunication());
 	        stmt.executeUpdate();
 	        // Fermer la connexion
 	        connection.close();
