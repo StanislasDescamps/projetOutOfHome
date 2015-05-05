@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Manager;
+import model.Genre;
 import model.Langue;
 import model.Utilisateur;
 
@@ -42,8 +43,8 @@ public class ListerUtilisateurServlet extends HttpServlet{
 			}
 		}
 		
-		//Initialisation de la liste finale
-		List<Utilisateur> newListeUtilisateurArround=new ArrayList<Utilisateur>();
+		//Initialisation de la liste intermediaire
+		List<Utilisateur> listeUtilisateurIntermediaire=new ArrayList<Utilisateur>();
 		
 		//voir si dans cette nouvelle liste il y a quelqu'un parlant la meme langue
 		if(listeUtilisateurArround!=null){
@@ -57,15 +58,34 @@ public class ListerUtilisateurServlet extends HttpServlet{
 				//comparaison de la liste de langue de l'utilisateur actuel et du lambda
 					for(Langue langue: listeLangueUtilisateurActuel ){
 						if(listeLangue.contains(langue)){
-							newListeUtilisateurArround.add(utilisateur2);
+							listeUtilisateurIntermediaire.add(utilisateur2);
 						}
 					}
 			}
 		}
+		//Initialisation de la liste intermediaire
+		List<Utilisateur> listeUtilisateurFinale=new ArrayList<Utilisateur>();
+		if(listeUtilisateurIntermediaire!=null){
+			//Recuperation des genres de l'utilisateur actuel
+			List<Genre> listeGenreUtilisateurActuel=Manager.getInstance().listerGenreByUtilisateur(idUtilisateur);
+			for(Utilisateur utilisateur3 : listeUtilisateurIntermediaire){
+				//Recuperation des langues de l'utilisateur lambda
+				List<Genre> listeGenre=Manager.getInstance().listerGenreByUtilisateur(utilisateur3.getIdUtilisateur());
+					
+				//comparaison de la liste de langue de l'utilisateur actuel et du lambda
+					for(Genre genre: listeGenreUtilisateurActuel ){
+						if(listeGenre.contains(genre)){
+							listeUtilisateurFinale.add(utilisateur3);
+						}
+					}
+			}
+			
+		}
+		
     	
 		Gson gson = new Gson();
 		
-		String json = gson.toJson(newListeUtilisateurArround);
+		String json = gson.toJson(listeUtilisateurFinale);
 		
 		PrintWriter out = response.getWriter();
 		out.append(json);
