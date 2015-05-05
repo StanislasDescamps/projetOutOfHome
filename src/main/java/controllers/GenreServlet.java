@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import metier.Manager;
 
-//import com.google.gson.Gson;
+public class GenreServlet extends HttpServlet{
 
-public class ProfilUtilisateurServlet extends HttpServlet{
-
-	private static final long serialVersionUID = 4866428176454974128L;
+	private static final long serialVersionUID = 8149048798233415146L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,19 +19,9 @@ public class ProfilUtilisateurServlet extends HttpServlet{
 		
 		Integer idUtilisateur=Integer.parseInt(request.getParameter("idUtilisateur"));
 		
-		
-		
 		//Ajout du choix de l'utilisateur dans la base de donnees
-		Integer idLangue=Integer.parseInt(request.getParameter("langues"));
-		Manager.getInstance().ajouterChoixLangue(idUtilisateur,idLangue);
-		
-		
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+		Integer idGenre=Integer.parseInt(request.getParameter("genre"));
+		Manager.getInstance().ajouterChoixGenre(idUtilisateur,idGenre);
 		
 	}
 }
